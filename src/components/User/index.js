@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Detail from './Detail';
 
-export default class User extends Component {
+class User extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,3 +17,5 @@ export default class User extends Component {
     );
   }
 }
+
+export default User;
