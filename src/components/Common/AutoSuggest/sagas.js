@@ -29,7 +29,10 @@ export function* AutoSuggestRequestSaga(data) {
       name
     });
   } catch (error) {
-    yield put({ type: GITHUB_USERS_FIELD_AUTOSUGGEST_FAILURE });
+    yield put({
+      type: GITHUB_USERS_FIELD_AUTOSUGGEST_FAILURE,
+      name
+    });
   }
 }
 

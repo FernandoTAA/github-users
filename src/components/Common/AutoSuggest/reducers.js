@@ -8,9 +8,9 @@ const autosuggest = (
   },
   action
 ) => {
+  const { status } = state;
   switch (action.type) {
     case GITHUB_USERS_FIELD_AUTOSUGGEST_REQUEST: {
-      const { status } = state;
       status[action.field.name] = {
         failure: false,
         loading: true
@@ -22,7 +22,6 @@ const autosuggest = (
     }
 
     case GITHUB_USERS_FIELD_AUTOSUGGEST_SUCCESS: {
-      const { status } = state;
       const payload = isEmpty(state.data) ? action.payload : mergeWith(state.data, action.payload);
       status[action.name] = {
         failure: false,
@@ -35,13 +34,13 @@ const autosuggest = (
     }
 
     case GITHUB_USERS_FIELD_AUTOSUGGEST_FAILURE: {
-      const { status } = state;
-      status[action.params.name] = {
+      status[action.name] = {
         failure: true,
         loading: false
       };
       return {
-        data: state.data
+        data: state.data,
+        status
       };
     }
     default:
