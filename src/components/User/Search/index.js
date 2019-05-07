@@ -27,6 +27,7 @@ class Search extends Component {
           objectapi="items"
           labelapi="login"
           valueapi="login"
+          limitResult={5}
           initvalue={userLogin}
         />
       </div>

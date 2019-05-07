@@ -51,7 +51,7 @@ class AutoSuggest extends Component {
   }
 
   loadSuggestions(value) {
-    const { name, endpoint, query, labelapi, valueapi, objectapi } = this.props;
+    const { name, endpoint, query, labelapi, valueapi, objectapi, limitResult } = this.props;
     const cacheKey = value.trim().toLowerCase();
     if (this.cache[cacheKey]) {
       this.setState({
@@ -66,7 +66,8 @@ class AutoSuggest extends Component {
           labelapi,
           valueapi,
           objectapi,
-          value
+          value,
+          limitResult
         }),
         this.setState({
           suggestions: getSuggestions(value, this.props.autoSuggestions)
@@ -146,7 +147,8 @@ AutoSuggest.propTypes = {
   timezones: PropTypes.arrayOf(PropTypes.objectOf),
   valueapi: PropTypes.string,
   placeholder: PropTypes.string,
-  initvalue: PropTypes.string
+  initvalue: PropTypes.string,
+  limitResult: PropTypes.number
 };
 AutoSuggest.defaultProps = {
   autoSuggestions: [],
@@ -163,5 +165,6 @@ AutoSuggest.defaultProps = {
   timezones: [],
   valueapi: '',
   placeholder: '',
-  initvalue: ''
+  initvalue: '',
+  limitResult: undefined
 };

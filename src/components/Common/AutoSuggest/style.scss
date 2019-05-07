@@ -1,5 +1,6 @@
 .react-autosuggest__suggestions-container {
   display: none;
+  position: absolute;
 }
 
 .react-autosuggest__suggestions-container--open {
@@ -22,6 +23,8 @@
 .react-autosuggest__suggestion {
   cursor: pointer;
   padding: 10px 20px;
+  float: none;
+  color: black;
 }
 
 .react-autosuggest__suggestion--highlighted {

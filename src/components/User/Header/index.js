@@ -15,10 +15,16 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        <img src="/logo-white.png" alt="Logo" />
-        <Search onChange={this.searchOnChange} />
-      </div>
+      <nav>
+        <div className="nav-wrapper grey darken-4">
+          <div className="col s12 header-container">
+            <img src="/logo-white.png" alt="Logo" className="header-logo" />
+            <div className="header-search">
+              <Search onChange={this.searchOnChange} />
+            </div>
+          </div>
+        </div>
+      </nav>
     );
   }
 }

@@ -6,7 +6,7 @@ import { GITHUB_USERS_FIELD_AUTOSUGGEST_REQUEST, GITHUB_USERS_FIELD_AUTOSUGGEST_
 
 export function* AutoSuggestRequestSaga(data) {
   const {
-    field: { endpoint, labelapi, name, objectapi, query, value, valueapi }
+    field: { endpoint, labelapi, name, objectapi, query, value, valueapi, limitResult }
   } = data;
   try {
     const autoSuggestRequest = yield call(CallApi, 'get', `${endpoint}${query}${value}`);
@@ -22,10 +22,11 @@ export function* AutoSuggestRequestSaga(data) {
             .reduce((acc, cur) => `${acc} ${cur}`),
           value: autoSuggestValueObject[valueapi]
         }));
+    const autoSuggestValuesFinal = !limitResult ? autoSuggestValues : autoSuggestValues.slice(0, limitResult);
 
     yield put({
       type: GITHUB_USERS_FIELD_AUTOSUGGEST_SUCCESS,
-      payload: { [name]: autoSuggestValues },
+      payload: { [name]: autoSuggestValuesFinal },
       name
     });
   } catch (error) {

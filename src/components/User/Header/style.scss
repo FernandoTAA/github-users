@@ -1,0 +1,21 @@
+.header-logo {
+    height: 34px;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-search {
+    input {
+        color: white;
+    }
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
